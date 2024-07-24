@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Todo } from './models/todo';
+import { Todo } from '../models/todo';
 import { CommonModule } from '@angular/common';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -18,7 +18,7 @@ export class TodoComponent {
   todoList: Todo[] = [];
   finishedList: Todo[] = [];
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
 
   addTodo() {
     if (this.todoValue !== '') {
@@ -41,4 +41,17 @@ export class TodoComponent {
     this.todoList.push(item[0]);
   }
 
+  openModal(content: TemplateRef<Element>, i: number, type: string) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then(
+      (result) => {
+        if (result) {
+          if (type === 'todoList') {
+            this.todoList.splice(i, 1);
+          } else {
+            this.finishedList.splice(i, 1);
+          }
+        }
+      
+    })
+  }
 }
