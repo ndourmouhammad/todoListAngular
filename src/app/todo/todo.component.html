@@ -11,7 +11,7 @@
             <div class="todo-list mt-3">
                 <h5> Tâches à faire</h5>
                 <div class="col-12 d-flex todo-single align-center" *ngFor="let todo of todoList; let i = index;">
-                    <input type="checkbox" class="col-1 todo-checkbox" >
+                    <input type="checkbox" class="col-1 todo-checkbox" [(ngModel)]="todo.value">
                     <p class="col-9">{{todo.content}}</p>
                     <button type="button" class="col-2 btn btn-outline-danger mb-3 ml-2" >
                        supprimer

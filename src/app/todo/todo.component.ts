@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Todo } from './models/todo';
+import { CommonModule } from '@angular/common';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
   selector: 'app-todo',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './todo.component.html',
   styleUrl: './todo.component.scss'
 })
