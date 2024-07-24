@@ -30,4 +30,15 @@ export class TodoComponent {
       this.todoValue = '';
     }
   }
+  changeTodo(i: number) {
+    const item = this.todoList.splice(i, 1);
+    console.log(item)
+    this.finishedList.push(item[0]);
+    
+  }
+  changeFinished(i: number) {
+    const item = this.finishedList.splice(i, 1);
+    this.todoList.push(item[0]);
+  }
+
 }
