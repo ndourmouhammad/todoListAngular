@@ -14,6 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class TodoComponent {
   todoValue: string = '';
+  todoTitle: string = '';
 
   todoList: Todo[] = [];
   finishedList: Todo[] = [];
@@ -23,11 +24,13 @@ export class TodoComponent {
   addTodo() {
     if (this.todoValue !== '') {
       this.todoList.push({ 
-      content: this.todoValue, 
+      content: this.todoTitle, 
       id: this.todoList.length + 1,
-      value: false 
+      value: false,
+      title: this.todoValue
       });
       this.todoValue = '';
+      this.todoTitle = '';
     }
   }
   changeTodo(i: number) {
